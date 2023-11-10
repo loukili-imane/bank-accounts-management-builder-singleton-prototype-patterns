@@ -68,6 +68,35 @@ public class BankAccount {
 
     public BankAccount() {
     }
+    // classe interne pour constrire uniquement es comptes
+    public static class AccountBuilder{
+        private BankAccount bankAccount = new BankAccount();
+        public AccountBuilder accountId(Long id){
+            bankAccount.accountId= id;
+            return this;
+        }
 
+        public static AccountBuilder builder(){
+            return new AccountBuilder();
+        }
+        public AccountBuilder currency(String currency){
+            bankAccount.currency = currency;
+            return this;
+        }
+        public AccountBuilder balance(double balance){
+            bankAccount.balance=balance;
+            return this;
+        }
+        public AccountBuilder type(AccountType type){
+            bankAccount.type=type;
+            return this;
+        }
+
+        public BankAccount build(){
+            return this.bankAccount;
+        }
+
+
+    }
 
 }
